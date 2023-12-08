@@ -1,0 +1,20 @@
+{
+  "name": "@digital-nomad/eslint-config",
+  "version": "1.0.0",
+  "description": "eslint config for digital-nomad project",
+  "main": "index.js",
+  "keywords": [
+    "eslint",
+    "config"
+  ],
+  "author": "Leopen",
+  "license": "Apache-2",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/parser": "^6.13.2",
+    "eslint-config-prettier": "^9.1.0"
+  }
+}
