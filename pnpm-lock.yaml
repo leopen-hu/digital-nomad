@@ -23,12 +23,12 @@ importers:
 
   apps/docs:
     dependencies:
-      '@acme/core':
+      '@digital-nomad/core':
         specifier: workspace:*
-        version: link:../../packages/acme-core
-      '@acme/utils':
+        version: link:../../packages/core
+      '@digital-nomad/utils':
         specifier: workspace:*
-        version: link:../../packages/acme-utils
+        version: link:../../packages/utils
       next:
         specifier: ^14.1.1
         version: 14.2.23(react-dom@18.3.1)(react@18.3.1)
@@ -39,12 +39,12 @@ importers:
         specifier: ^18.2.0
         version: 18.3.1(react@18.3.1)
     devDependencies:
-      '@acme/eslint-config':
+      '@digital-nomad/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
-      '@acme/tsconfig':
+      '@digital-nomad/tsconfig':
         specifier: workspace:*
-        version: link:../../packages/acme-tsconfig
+        version: link:../../packages/tsconfig
       '@next/eslint-plugin-next':
         specifier: ^14.1.1
         version: 14.2.23
@@ -61,48 +61,18 @@ importers:
         specifier: 5.5.4
         version: 5.5.4
 
-  packages/acme-core:
+  packages/core:
     dependencies:
       react:
         specifier: ^18.2.0
         version: 18.3.1
     devDependencies:
-      '@acme/eslint-config':
+      '@digital-nomad/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@acme/tsconfig':
+      '@digital-nomad/tsconfig':
         specifier: workspace:*
-        version: link:../acme-tsconfig
-      '@types/react':
-        specifier: ^18.2.61
-        version: 18.3.18
-      '@types/react-dom':
-        specifier: ^18.2.19
-        version: 18.3.5(@types/react@18.3.18)
-      eslint:
-        specifier: ^8.57.0
-        version: 8.57.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.3.6(typescript@5.5.4)
-      typescript:
-        specifier: 5.5.4
-        version: 5.5.4
-
-  packages/acme-tsconfig: {}
-
-  packages/acme-utils:
-    dependencies:
-      react:
-        specifier: ^18.2.0
-        version: 18.3.1
-    devDependencies:
-      '@acme/eslint-config':
-        specifier: workspace:*
-        version: link:../eslint-config
-      '@acme/tsconfig':
-        specifier: workspace:*
-        version: link:../acme-tsconfig
+        version: link:../tsconfig
       '@types/react':
         specifier: ^18.2.61
         version: 18.3.18
@@ -142,6 +112,36 @@ importers:
       eslint-plugin-only-warn:
         specifier: ^1.1.0
         version: 1.1.0
+      typescript:
+        specifier: 5.5.4
+        version: 5.5.4
+
+  packages/tsconfig: {}
+
+  packages/utils:
+    dependencies:
+      react:
+        specifier: ^18.2.0
+        version: 18.3.1
+    devDependencies:
+      '@digital-nomad/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@digital-nomad/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      '@types/react':
+        specifier: ^18.2.61
+        version: 18.3.18
+      '@types/react-dom':
+        specifier: ^18.2.19
+        version: 18.3.5(@types/react@18.3.18)
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.3.6(typescript@5.5.4)
       typescript:
         specifier: 5.5.4
         version: 5.5.4
