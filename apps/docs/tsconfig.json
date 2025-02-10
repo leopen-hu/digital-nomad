@@ -10,5 +10,11 @@
       }
     ]
   },
-  "include": ["src", "next-env.d.ts", ".next/types/**/*.ts"]
+  "include": [
+    "src",
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "vitest.config.ts",
+    "test/**/*.ts"
+  ]
 }
