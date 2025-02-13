@@ -7,7 +7,7 @@
     "test": "turbo test",
     "clean": "turbo clean && pnpm clean-node_modules",
     "clean-node_modules": "pnpm dlx rimraf 'node_modules' '**/node_modules'",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md}\"",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "turbo build --filter=docs^... && changeset publish"

@@ -1,4 +1,4 @@
-import { Button } from "@digital-nomad/core";
+import { Button } from '@digital-nomad/core'
 
 export default function Page() {
   return (
@@ -6,5 +6,5 @@ export default function Page() {
       <h1>Web</h1>
       <Button>Boop</Button>
     </>
-  );
+  )
 }
