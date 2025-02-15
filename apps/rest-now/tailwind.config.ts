@@ -1,5 +1,4 @@
 import animate from 'tailwindcss-animate'
-// const animate = require("tailwindcss-animate")
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -7,12 +6,7 @@ module.exports = {
   safelist: ['dark'],
   prefix: '',
 
-  content: [
-    './pages/**/*.{ts,tsx,vue}',
-    './components/**/*.{ts,tsx,vue}',
-    './app/**/*.{ts,tsx,vue}',
-    './src/**/*.{ts,tsx,vue}',
-  ],
+  content: ['./src/**/*.{ts,tsx,vue}', './index.html'],
 
   theme: {
     container: {
