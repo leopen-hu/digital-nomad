@@ -18,9 +18,16 @@
     "prettier": "^3.2.5",
     "turbo": "^2.4.0"
   },
-  "packageManager": "pnpm@8.15.6",
+  "packageManager": "pnpm@10.2.1",
   "engines": {
     "node": ">=18"
   },
-  "name": "with-changesets"
+  "name": "with-changesets",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "electron",
+      "electron-winstaller",
+      "esbuild"
+    ]
+  }
 }

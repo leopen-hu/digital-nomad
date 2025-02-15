@@ -1,11 +1,11 @@
 {
-  "name": "rest-now",
+  "name": "@digital-nomad/rest-now",
   "productName": "rest-now",
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": ".vite/build/main.js",
   "scripts": {
-    "start": "electron-forge start",
+    "dev": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
@@ -25,12 +25,15 @@
     "@types/electron-squirrel-startup": "^1.0.2",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/runtime-dom": "^3.5.13",
     "electron": "34.2.0",
     "eslint": "^8.0.1",
     "eslint-plugin-import": "^2.25.0",
     "ts-node": "^10.0.0",
     "typescript": "~4.5.4",
-    "vite": "^5.0.12"
+    "vite": "^5.0.12",
+    "vue-tsc": "^2.2.0"
   },
   "keywords": [],
   "author": {
@@ -39,6 +42,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.1"
+    "electron-squirrel-startup": "^1.0.1",
+    "vue": "^3.5.13"
   }
 }
