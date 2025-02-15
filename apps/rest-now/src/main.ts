@@ -2,6 +2,9 @@ import { app, BrowserWindow } from 'electron'
 import path from 'node:path'
 import started from 'electron-squirrel-startup'
 
+declare const MAIN_WINDOW_VITE_DEV_SERVER_URL: string
+declare const MAIN_WINDOW_VITE_NAME: string
+
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (started) {
   app.quit()
@@ -15,12 +18,15 @@ const createWindow = () => {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
+    // titleBarStyle: 'hidden',
   })
 
   // and load the index.html of the app.
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
+    console.log('MAIN_WINDOW_VITE_DEV_SERVER_URL', MAIN_WINDOW_VITE_DEV_SERVER_URL)
     mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL)
   } else {
+    console.log('MAIN_WINDOW_VITE_NAME', MAIN_WINDOW_VITE_NAME)
     mainWindow.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`))
   }
 

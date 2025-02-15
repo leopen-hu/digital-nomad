@@ -5,7 +5,7 @@
     "moduleResolution": "Node",
     "strict": true,
     "jsx": "preserve",
-    "types": ["vite/client", "electron"],
+    "types": ["vite/client", "electron", "vitest/globals"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
