@@ -8,7 +8,7 @@
     "types": ["vite/client", "electron"],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     },
     "allowJs": true,
     "resolveJsonModule": true,
