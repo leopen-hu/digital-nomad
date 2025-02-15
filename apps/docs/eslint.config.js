@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   root: true,
   extends: ['@digital-nomad/eslint-config/next.js'],
   parser: '@typescript-eslint/parser',
