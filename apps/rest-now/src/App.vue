@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { MainMenu } from '@/components/main-menu'
+import { RouterView } from 'vue-router'
+import MainMenu from './components/MainMenu.vue'
 </script>
 
 <template>
   <MainMenu />
+  <RouterView />
 </template>
