@@ -18,7 +18,12 @@ const createWindow = () => {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
-    // titleBarStyle: 'hidden',
+    titleBarStyle: 'hidden',
+    titleBarOverlay: {
+      color: '#ffffff',
+      symbolColor: '#000000',
+      height: 35,
+    },
   })
 
   // and load the index.html of the app.
