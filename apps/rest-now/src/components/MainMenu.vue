@@ -17,7 +17,7 @@ import {
 </script>
 
 <template>
-  <Menubar class="rounded-none">
+  <Menubar class="sticky rounded-none">
     <MenubarMenu>
       <MenubarTrigger>File</MenubarTrigger>
       <MenubarContent>

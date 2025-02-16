@@ -4,6 +4,8 @@ import MainMenu from './components/MainMenu.vue'
 </script>
 
 <template>
-  <MainMenu />
-  <RouterView />
+  <div class="h-dvh overflow-x-hidden">
+    <nav><MainMenu /></nav>
+    <div class="h-[calc(100%-36px)]"><RouterView/></div>
+  </div>
 </template>
