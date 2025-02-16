@@ -1,8 +1,15 @@
-import { app, BrowserWindow } from 'electron'
+import {
+  app,
+  BrowserWindow,
+  Menu,
+  NativeImage,
+  nativeImage,
+  Tray,
+} from 'electron'
 import path from 'node:path'
 import started from 'electron-squirrel-startup'
 
-declare const MAIN_WINDOW_VITE_DEV_SERVER_URL: string
+declare const MAIN_WINDOW_VITE_DEV_SERVER_URL: string | undefined
 declare const MAIN_WINDOW_VITE_NAME: string
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -10,8 +17,17 @@ if (started) {
   app.quit()
 }
 
+const getDevServerUrl = () => MAIN_WINDOW_VITE_DEV_SERVER_URL
+const getProductionPathPrefix = () =>
+  path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}`)
+const createTray = (iconPath: string) => {
+  const tray = new Tray(nativeImage.createFromPath(iconPath))
+  tray.setToolTip('test Tray')
+}
+
 const createWindow = () => {
   // Create the browser window.
+
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
@@ -26,14 +42,19 @@ const createWindow = () => {
     // },
   })
 
-  // and load the index.html of the app.
-  if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
-    console.log('MAIN_WINDOW_VITE_DEV_SERVER_URL', MAIN_WINDOW_VITE_DEV_SERVER_URL)
-    mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL)
+  const devServerUrl = MAIN_WINDOW_VITE_DEV_SERVER_URL
+  const productionPathPrefix = getProductionPathPrefix()
+  if (devServerUrl) {
+    mainWindow.loadURL(devServerUrl)
   } else {
-    console.log('MAIN_WINDOW_VITE_NAME', MAIN_WINDOW_VITE_NAME)
-    mainWindow.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`))
+    mainWindow.loadFile(`${productionPathPrefix}/index.html`)
   }
+
+  const iconPath = path.join(
+    devServerUrl ? __dirname : productionPathPrefix,
+    'icons/icon2.ico',
+  )
+  createTray(iconPath)
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
