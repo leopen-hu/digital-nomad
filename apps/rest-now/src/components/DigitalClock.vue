@@ -39,8 +39,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col h-full items-center justify-center">
-    <div class="flex flex-nowrap h-full items-center justify-center">
+  <div class="flex flex-col gap-16 h-full items-center justify-center">
+    <div class="flex flex-nowrap items-center justify-center">
       <div class="flex size-40 items-center justify-center bg-muted">
         <span class="text-8xl text-primary">{{
           formattedTime.hours
@@ -63,7 +63,7 @@ onMounted(() => {
         }}</span>
       </div>
     </div>
-    <div>
+    <div class="flex gap-4">
       <button
         class="bg-primary text-white px-4 py-2 rounded-md"
         @click="start()"
