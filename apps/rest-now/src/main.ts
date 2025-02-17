@@ -1,6 +1,7 @@
 import { app, BrowserWindow, Menu, nativeImage, Tray } from 'electron'
 import path from 'node:path'
 import started from 'electron-squirrel-startup'
+import addCountDownListener from './module/count-down/listeners'
 
 declare const MAIN_WINDOW_VITE_DEV_SERVER_URL: string | undefined
 declare const MAIN_WINDOW_VITE_NAME: string
@@ -13,7 +14,6 @@ if (started) {
 }
 
 const createWindow = () => {
-  // Create the browser window.
   const devServerUrl = MAIN_WINDOW_VITE_DEV_SERVER_URL
   const productionPathPrefix = path.join(
     __dirname,
@@ -68,8 +68,8 @@ const createWindow = () => {
 
     mainWindow.on('close', (event) => {
       if (!isQutingFromTrat) {
-        event.preventDefault()      // 阻止默认关闭行为
-        mainWindow.hide()           // 隐藏窗口而不是关闭
+        event.preventDefault()
+        mainWindow.hide()
       }
     })
 
@@ -78,6 +78,18 @@ const createWindow = () => {
 
   const mainWindow = createBrowserWindow()
   createTray(iconPath, mainWindow)
+  addCountDownListener(mainWindow)
+
+  // init countDown timer with local config
+  // initCountDownTimer()
+  // tell mainWindow to render countDown timer with config
+  // mainWindow.webContents.send('countDownTimer', config)
+
+  // on start message from renderer and start countDown
+  // inform renderer to render current countDown
+
+  // once countDown timer is done
+  // inform renderer to render countDown timer with config
 }
 
 // This method will be called when Electron has finished
