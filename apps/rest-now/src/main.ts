@@ -1,23 +1,16 @@
-import {
-  app,
-  BrowserWindow,
-  Menu,
-  NativeImage,
-  nativeImage,
-  Tray,
-} from 'electron'
+import { app, BrowserWindow, Menu, nativeImage, Tray } from 'electron'
 import path from 'node:path'
 import started from 'electron-squirrel-startup'
 
 declare const MAIN_WINDOW_VITE_DEV_SERVER_URL: string | undefined
 declare const MAIN_WINDOW_VITE_NAME: string
 
+let isQutingFromTrat = false
+
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (started) {
   app.quit()
 }
-
-
 
 const createWindow = () => {
   // Create the browser window.
@@ -28,7 +21,7 @@ const createWindow = () => {
   )
   const iconPath = path.join(
     devServerUrl ? __dirname : productionPathPrefix,
-    'icons/icon2.ico',
+    'icons/icon.ico',
   )
 
   const createTray = (iconPath: string, mainWindow: BrowserWindow) => {
@@ -37,6 +30,7 @@ const createWindow = () => {
       {
         label: 'Quit',
         click: () => {
+          isQutingFromTrat = true
           app.quit()
         },
       },
@@ -71,6 +65,13 @@ const createWindow = () => {
     } else {
       mainWindow.loadFile(`${productionPathPrefix}/index.html`)
     }
+
+    mainWindow.on('close', (event) => {
+      if (!isQutingFromTrat) {
+        event.preventDefault()      // 阻止默认关闭行为
+        mainWindow.hide()           // 隐藏窗口而不是关闭
+      }
+    })
 
     return mainWindow
   }
