@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue'
-import { useCountDown } from '@/store/count-down'
-import { storeToRefs } from 'pinia'
 
 let formattedTime = ref({
   hours: '00',
@@ -17,38 +15,73 @@ const setFormattedTime = (seconds: number) => {
   formattedTime.value.seconds = format(Math.floor(seconds % 60))
 }
 
-const setInitialTime = async () => {
+const setCurrentTime = async () => {
   const seconds = await window.countDownApi.getSeconds()
-  console.log(seconds)
   setFormattedTime(seconds)
 }
 
+const start = async () => {
+  await window.countDownApi.start()
+}
+
+const stop = async () => {
+  await window.countDownApi.stop()
+}
+
+const reset = async () => {
+  await window.countDownApi.reset()
+}
+
 onMounted(() => {
-  setInitialTime()
+  setCurrentTime()
   window.countDownApi.onUpdated(setFormattedTime)
 })
 </script>
 
 <template>
-  <div class="flex flex-nowrap h-full items-center justify-center">
-    <div class="flex size-40 items-center justify-center bg-muted">
-      <span class="text-8xl text-primary">{{ formattedTime.hours }}</span>
+  <div class="flex flex-col h-full items-center justify-center">
+    <div class="flex flex-nowrap h-full items-center justify-center">
+      <div class="flex size-40 items-center justify-center bg-muted">
+        <span class="text-8xl text-primary">{{
+          formattedTime.hours
+        }}</span>
+      </div>
+      <div class="p-4">
+        <span class="text-8xl text-primary">:</span>
+      </div>
+      <div class="flex size-40 items-center justify-center bg-muted">
+        <span class="text-8xl text-primary">{{
+          formattedTime.minutes
+        }}</span>
+      </div>
+      <div class="p-4">
+        <span class="text-8xl text-primary">:</span>
+      </div>
+      <div class="flex size-40 items-center justify-center bg-muted">
+        <span class="text-8xl text-primary">{{
+          formattedTime.seconds
+        }}</span>
+      </div>
     </div>
-    <div class="p-4">
-      <span class="text-8xl text-primary">:</span>
-    </div>
-    <div class="flex size-40 items-center justify-center bg-muted">
-      <span class="text-8xl text-primary">{{
-        formattedTime.minutes
-      }}</span>
-    </div>
-    <div class="p-4">
-      <span class="text-8xl text-primary">:</span>
-    </div>
-    <div class="flex size-40 items-center justify-center bg-muted">
-      <span class="text-8xl text-primary">{{
-        formattedTime.seconds
-      }}</span>
+    <div>
+      <button
+        class="bg-primary text-white px-4 py-2 rounded-md"
+        @click="start()"
+      >
+        Start
+      </button>
+      <button
+        class="bg-primary text-white px-4 py-2 rounded-md"
+        @click="stop()"
+      >
+        Stop
+      </button>
+      <button
+        class="bg-primary text-white px-4 py-2 rounded-md"
+        @click="reset()"
+      >
+        Reset
+      </button>
     </div>
   </div>
 </template>

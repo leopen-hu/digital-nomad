@@ -13,7 +13,6 @@ const addCountDownListener = (
 
   ipcMain.handle(COUNT_DOWN_CHANNELS.GET_SECONDS, () => {
     return countDown.getSeconds()
-    console.log(countDown.getSeconds())
   })
 
   ipcMain.handle(COUNT_DOWN_CHANNELS.START, () => {
@@ -26,6 +25,7 @@ const addCountDownListener = (
 
   ipcMain.handle(COUNT_DOWN_CHANNELS.RESET, () => {
     countDown.reset()
+    noticeRenderer(countDown.getSeconds())
   })
 
   ipcMain.handle(COUNT_DOWN_CHANNELS.FINISH, () => {
