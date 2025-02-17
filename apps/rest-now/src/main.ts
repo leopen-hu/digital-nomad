@@ -17,47 +17,66 @@ if (started) {
   app.quit()
 }
 
-const getDevServerUrl = () => MAIN_WINDOW_VITE_DEV_SERVER_URL
-const getProductionPathPrefix = () =>
-  path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}`)
-const createTray = (iconPath: string) => {
-  const tray = new Tray(nativeImage.createFromPath(iconPath))
-  tray.setToolTip('test Tray')
-}
+
 
 const createWindow = () => {
   // Create the browser window.
-
-  const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
-    },
-    // titleBarStyle: 'hidden',
-    // titleBarOverlay: {
-    //   color: '#ffffff',
-    //   symbolColor: '#000000',
-    //   height: 35,
-    // },
-  })
-
   const devServerUrl = MAIN_WINDOW_VITE_DEV_SERVER_URL
-  const productionPathPrefix = getProductionPathPrefix()
-  if (devServerUrl) {
-    mainWindow.loadURL(devServerUrl)
-  } else {
-    mainWindow.loadFile(`${productionPathPrefix}/index.html`)
-  }
-
+  const productionPathPrefix = path.join(
+    __dirname,
+    `../renderer/${MAIN_WINDOW_VITE_NAME}`,
+  )
   const iconPath = path.join(
     devServerUrl ? __dirname : productionPathPrefix,
     'icons/icon2.ico',
   )
-  createTray(iconPath)
 
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  const createTray = (iconPath: string, mainWindow: BrowserWindow) => {
+    const tray = new Tray(nativeImage.createFromPath(iconPath))
+    const trayMenu = Menu.buildFromTemplate([
+      {
+        label: 'Quit',
+        click: () => {
+          app.quit()
+        },
+      },
+    ])
+    tray.setContextMenu(trayMenu)
+    tray.setToolTip('Rest Now')
+
+    tray.on('click', () => {
+      mainWindow.show()
+    })
+  }
+
+  const createBrowserWindow = () => {
+    // Create the browser window.
+    const mainWindow = new BrowserWindow({
+      width: 800,
+      height: 600,
+      webPreferences: {
+        preload: path.join(__dirname, 'preload.js'),
+      },
+      // titleBarStyle: 'hidden',
+      // titleBarOverlay: {
+      //   color: '#ffffff',
+      //   symbolColor: '#000000',
+      //   height: 35,
+      // },
+    })
+
+    if (devServerUrl) {
+      mainWindow.loadURL(devServerUrl)
+      mainWindow.webContents.openDevTools()
+    } else {
+      mainWindow.loadFile(`${productionPathPrefix}/index.html`)
+    }
+
+    return mainWindow
+  }
+
+  const mainWindow = createBrowserWindow()
+  createTray(iconPath, mainWindow)
 }
 
 // This method will be called when Electron has finished
