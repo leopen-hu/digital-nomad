@@ -1,29 +1,37 @@
 <script setup lang="ts">
 import DigitalClock from '@/components/DigitalClock.vue'
-import Dialog from '@/components/ui/dialog/Dialog.vue'
-import DialogContent from '@/components/ui/dialog/DialogContent.vue'
-import { useServerCountDown } from '@/store/server-count-down';
-import { storeToRefs } from 'pinia';
+import AlertDialog from '@/components/ui/alert-dialog/AlertDialog.vue'
+import AlertDialogContent from '@/components/ui/alert-dialog/AlertDialogContent.vue'
+import AlertDialogFooter from '@/components/ui/alert-dialog/AlertDialogFooter.vue'
+import AlertDialogCancel from '@/components/ui/alert-dialog/AlertDialogCancel.vue'
+import { useServerCountDown } from '@/store/server-count-down'
+import { storeToRefs } from 'pinia'
 
 const serverCountDown = useServerCountDown()
 const { status } = storeToRefs(serverCountDown)
-
 </script>
 
 <template>
   <DigitalClock />
-  <Dialog :open="status === 'finished'">
-    <DialogContent asChild disableOutsidePointerEvents>
-      <div class="max-w-[70%]">
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
-        <div>test</div>
+  <AlertDialog
+    :open="status === 'finished'"
+    @update:open="serverCountDown.reset"
+  >
+    <AlertDialogContent disableOutsidePointerEvents class="max-w-[70%]">
+      <div>
+        <div>Rest Now!</div>
+        <div>Rest Now!</div>
+        <div>Rest Now!</div>
+        <div>Rest Now!</div>
+        <div>Rest Now!</div>
+        <div>Rest Now!</div>
+        <div>Rest Now!</div>
+        <div>Rest Now!</div>
       </div>
-    </DialogContent>
-  </Dialog>
+      <AlertDialogFooter>
+        <AlertDialogCancel>继续工作</AlertDialogCancel>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+    
+  </AlertDialog>
 </template>
