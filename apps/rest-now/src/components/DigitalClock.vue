@@ -1,23 +1,12 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted } from 'vue'
+import { useServerCountDown } from '@/store/server-count-down'
 
-let formattedTime = ref({
-  hours: '00',
-  minutes: '00',
-  seconds: '00',
-})
-const setFormattedTime = (seconds: number) => {
-  const format = (time: number) => {
-    return time < 10 ? `0${time}` : `${time}`
-  }
-  formattedTime.value.hours = format(Math.floor(seconds / 3600))
-  formattedTime.value.minutes = format(Math.floor((seconds % 3600) / 60))
-  formattedTime.value.seconds = format(Math.floor(seconds % 60))
-}
+const serverCountDown = useServerCountDown()
 
-const setCurrentTime = async () => {
+const getInitialSeconds = async () => {
   const seconds = await window.countDownApi.getSeconds()
-  setFormattedTime(seconds)
+  serverCountDown.setSeconds(seconds)
 }
 
 const start = async () => {
@@ -33,8 +22,8 @@ const reset = async () => {
 }
 
 onMounted(() => {
-  setCurrentTime()
-  window.countDownApi.onUpdated(setFormattedTime)
+  getInitialSeconds()
+  window.countDownApi.onUpdated(serverCountDown.setSeconds)
 })
 </script>
 
@@ -43,7 +32,7 @@ onMounted(() => {
     <div class="flex flex-nowrap items-center justify-center">
       <div class="flex size-40 items-center justify-center bg-muted">
         <span class="text-8xl text-primary">{{
-          formattedTime.hours
+          serverCountDown.getFormattedTime('hours')
         }}</span>
       </div>
       <div class="p-4">
@@ -51,7 +40,7 @@ onMounted(() => {
       </div>
       <div class="flex size-40 items-center justify-center bg-muted">
         <span class="text-8xl text-primary">{{
-          formattedTime.minutes
+          serverCountDown.getFormattedTime('minutes')
         }}</span>
       </div>
       <div class="p-4">
@@ -59,7 +48,7 @@ onMounted(() => {
       </div>
       <div class="flex size-40 items-center justify-center bg-muted">
         <span class="text-8xl text-primary">{{
-          formattedTime.seconds
+          serverCountDown.getFormattedTime('seconds')
         }}</span>
       </div>
     </div>
