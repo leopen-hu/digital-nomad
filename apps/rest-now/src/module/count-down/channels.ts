@@ -3,7 +3,6 @@ const COUNT_DOWN_CHANNELS = {
   START: 'count-down:start',
   STOP: 'count-down:stop',
   RESET: 'count-down:reset',
-  FINISH: 'count-down:finish',
   UPDATED: 'count-down:updated',
 }
 

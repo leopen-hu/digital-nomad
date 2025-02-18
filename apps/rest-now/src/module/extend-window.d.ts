@@ -1,4 +1,4 @@
-import { ICountDownApi } from './module/count-down/interface'
+import { ICountDownApi } from './count-down/api'
 
 declare global {
   interface Window {
