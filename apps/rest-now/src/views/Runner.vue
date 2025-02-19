@@ -6,13 +6,19 @@ import AlertDialogFooter from '@/components/ui/alert-dialog/AlertDialogFooter.vu
 import AlertDialogCancel from '@/components/ui/alert-dialog/AlertDialogCancel.vue'
 import { useServerCountDown } from '@/store/server-count-down'
 import { storeToRefs } from 'pinia'
+import WorkAnimate from '@/components/WorkAnimate.vue'
 
 const serverCountDown = useServerCountDown()
 const { status } = storeToRefs(serverCountDown)
 </script>
 
 <template>
-  <DigitalClock />
+  <div class="flex flex-col items-center justify-center h-3/5">
+    <WorkAnimate></WorkAnimate>
+  </div>
+  <div class="flex justify-center h-2/5">
+    <DigitalClock/>
+  </div>
   <AlertDialog
     :open="status === 'finished'"
     @update:open="serverCountDown.reset"
@@ -32,6 +38,5 @@ const { status } = storeToRefs(serverCountDown)
         <AlertDialogCancel>继续工作</AlertDialogCancel>
       </AlertDialogFooter>
     </AlertDialogContent>
-    
   </AlertDialog>
 </template>

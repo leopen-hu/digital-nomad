@@ -12,7 +12,7 @@ import MainMenu from './components/MainMenu.vue'
       <div
         class="absolute inset-0 bg-gradient-to-b from-black/80 to-black/30"
       ></div>
-      <div class="relative z-10 p-8">
+      <div class="relative z-10 p-8 text-white h-full">
         <RouterView />
       </div>
     </div>

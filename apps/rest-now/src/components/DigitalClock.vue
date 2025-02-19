@@ -10,15 +10,15 @@ const getInitialSeconds = async () => {
 }
 
 const start = async () => {
-  await window.countDownApi.start()
+  await serverCountDown.start()
 }
 
 const stop = async () => {
-  await window.countDownApi.stop()
+  await serverCountDown.stop()
 }
 
 const reset = async () => {
-  await window.countDownApi.reset()
+  await serverCountDown.reset()
 }
 
 onMounted(() => {
@@ -28,26 +28,26 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-16 h-full items-center justify-center">
+  <div class="flex flex-col h-full items-center justify-start">
     <div class="flex flex-nowrap items-center justify-center">
-      <div class="flex size-40 items-center justify-center bg-muted">
-        <span class="text-8xl text-primary">{{
+      <div class="flex size-40 items-center justify-center">
+        <span class="text-8xl text-gray-200">{{
           serverCountDown.getFormattedTime('hours')
         }}</span>
       </div>
       <div class="p-4">
-        <span class="text-8xl text-primary">:</span>
+        <span class="text-8xl text-gray-200">:</span>
       </div>
-      <div class="flex size-40 items-center justify-center bg-muted">
-        <span class="text-8xl text-primary">{{
+      <div class="flex size-40 items-center justify-center">
+        <span class="text-8xl text-gray-200">{{
           serverCountDown.getFormattedTime('minutes')
         }}</span>
       </div>
       <div class="p-4">
-        <span class="text-8xl text-primary">:</span>
+        <span class="text-8xl text-gray-200">:</span>
       </div>
-      <div class="flex size-40 items-center justify-center bg-muted">
-        <span class="text-8xl text-primary">{{
+      <div class="flex size-40 items-center justify-center">
+        <span class="text-8xl text-gray-200">{{
           serverCountDown.getFormattedTime('seconds')
         }}</span>
       </div>
