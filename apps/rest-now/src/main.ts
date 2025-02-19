@@ -21,7 +21,7 @@ const createWindow = () => {
   )
   const iconPath = path.join(
     devServerUrl ? __dirname : productionPathPrefix,
-    'icons/icon.ico',
+    'assets/icons/icon.ico',
   )
 
   const createTray = (iconPath: string, mainWindow: BrowserWindow) => {
