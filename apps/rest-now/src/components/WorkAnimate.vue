@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { useServerCountDown } from '@/store/server-count-down'
+import { useServerAppTimer } from '@/store/server-app-timer'
 import { storeToRefs } from 'pinia'
 import { onMounted, onUnmounted, ref } from 'vue'
 
-const serverCountDown = useServerCountDown()
+const serverAppTimer = useServerAppTimer()
 let imgDynamicClass = ref('')
 let fireDynamicClass = ref('')
 
 onMounted(() => {
-  serverCountDown.$onAction(({ name, store, after }) => {
+  serverAppTimer.$onAction(({ name, store, after }) => {
     if (name === 'start') {
       imgDynamicClass.value = 'animate-rocket-start'
       fireDynamicClass.value = 'animate-fire-start'
@@ -26,9 +26,9 @@ onMounted(() => {
 
 const handleImgAnimationEnd = () => {
   imgDynamicClass.value =
-    serverCountDown.status === 'started' ? 'animate-flying' : ''
+    serverAppTimer.status === 'started' ? 'animate-flying' : ''
   fireDynamicClass.value =
-    serverCountDown.status === 'started' ? 'animate-flying' : ''
+    serverAppTimer.status === 'started' ? 'animate-flying' : ''
 }
 </script>
 

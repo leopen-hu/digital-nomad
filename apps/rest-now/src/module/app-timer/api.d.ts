@@ -1,4 +1,4 @@
-export interface ICountDownApi {
+export interface IAppTimerApi {
   getSeconds: () => Promise<number>
   start: () => Promise<void>
   stop: () => Promise<void>

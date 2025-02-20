@@ -1,7 +1,7 @@
-import { ICountDownApi } from './count-down/api'
+import { IAppTimerApi } from './app-timer/api'
 
 declare global {
   interface Window {
-    countDownApi: ICountDownApi
+    appTimerApi: IAppTimerApi
   }
 }

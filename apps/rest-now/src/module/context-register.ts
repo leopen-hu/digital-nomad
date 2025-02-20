@@ -1,5 +1,5 @@
-import registerCountDownContext from "./count-down/context";
+import registerAppTimerContext from './app-timer/context'
 
 export const registerContext = () => {
-  registerCountDownContext()
+  registerAppTimerContext()
 }

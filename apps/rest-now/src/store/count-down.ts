@@ -1,41 +1,41 @@
 import { defineStore } from 'pinia'
 
-export const useCountDown = defineStore('countDown', {
+export const useAppTimer = defineStore('appTimer', {
   state: () => ({
-    countDown: 0,
+    appTimer: 0,
     isCountingDown: false,
-    isCountDownPaused: false,
-    isCountDownFinished: true,
+    isAppTimerPaused: false,
+    isAppTimerFinished: true,
     interval: null as NodeJS.Timeout | null,
   }),
   actions: {
-    startCountDown(duration: number = 3600) {
-      this.countDown = duration
+    startAppTimer(duration: number = 3600) {
+      this.appTimer = duration
       this.isCountingDown = true
-      this.isCountDownPaused = false
-      this.isCountDownFinished = false
+      this.isAppTimerPaused = false
+      this.isAppTimerFinished = false
       this.createInterval()
     },
-    pauseCountDown() {
-      this.isCountDownPaused = true
+    pauseAppTimer() {
+      this.isAppTimerPaused = true
       this.destroyInterval()
     },
-    continueCountDown() {
-      this.startCountDown(this.countDown)
+    continueAppTimer() {
+      this.startAppTimer(this.appTimer)
     },
-    resetCountDown(duration: number = 3600) {
-      this.countDown = duration
+    resetAppTimer(duration: number = 3600) {
+      this.appTimer = duration
       this.isCountingDown = false
-      this.isCountDownPaused = false
-      this.isCountDownFinished = true
+      this.isAppTimerPaused = false
+      this.isAppTimerFinished = true
       this.destroyInterval()
     },
-    finishCountDown() {
-      this.resetCountDown(0)
+    finishAppTimer() {
+      this.resetAppTimer(0)
     },
     createInterval() {
       this.interval = setInterval(() => {
-        this.countDown--
+        this.appTimer--
       }, 1000)
     },
     destroyInterval() {
@@ -48,16 +48,16 @@ export const useCountDown = defineStore('countDown', {
         const format = (n: number) => (n < 10 ? `0${n}` : n)
         switch (name) {
           case 'hours':
-            return format(Math.floor(state.countDown / 3600))
+            return format(Math.floor(state.appTimer / 3600))
           case 'minutes':
-            return format(Math.floor((state.countDown % 3600) / 60))
+            return format(Math.floor((state.appTimer % 3600) / 60))
           case 'seconds':
-            return format(Math.floor(state.countDown % 60))
+            return format(Math.floor(state.appTimer % 60))
           default:
             return {
-              hours: format(Math.floor(state.countDown / 3600)),
-              minutes: format(Math.floor((state.countDown % 3600) / 60)),
-              seconds: format(Math.floor(state.countDown % 60)),
+              hours: format(Math.floor(state.appTimer / 3600)),
+              minutes: format(Math.floor((state.appTimer % 3600) / 60)),
+              seconds: format(Math.floor(state.appTimer % 60)),
             }
         }
       }

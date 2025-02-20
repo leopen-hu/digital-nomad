@@ -1,15 +1,15 @@
 import { defineStore } from 'pinia'
 
-type CountDownState = {
+type AppTimerState = {
   seconds: number
   status: 'started' | 'stoped' | 'finished'
 }
 
 type formatEnum = 'hours' | 'minutes' | 'seconds' | 'all'
 
-export const useServerCountDown = defineStore('countDown', {
+export const useServerAppTimer = defineStore('appTimer', {
   state: () => {
-    const state: CountDownState = {
+    const state: AppTimerState = {
       seconds: 0,
       status: 'stoped',
     }
@@ -24,17 +24,17 @@ export const useServerCountDown = defineStore('countDown', {
     },
     start: async function () {
       this.status = 'started'
-      await window.countDownApi.start()
+      await window.appTimerApi.start()
     },
 
     stop: async function () {
       this.status = 'stoped'
-      await window.countDownApi.stop()
+      await window.appTimerApi.stop()
     },
 
     reset: async function () {
       this.status = 'stoped'
-      await window.countDownApi.reset()
+      await window.appTimerApi.reset()
     },
   },
   getters: {
@@ -56,6 +56,6 @@ export const useServerCountDown = defineStore('countDown', {
             }
         }
       }
-    }
+    },
   },
 })

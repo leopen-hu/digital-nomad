@@ -1,4 +1,4 @@
-class CountDown {
+class AppTimer {
   private defaultSeconds: number
   private seconds: number
   private timer?: NodeJS.Timeout
@@ -58,12 +58,12 @@ class CountDown {
   }
 }
 
-const createCountDown = (
+const createAppTimer = (
   seconds: number,
   intervalCallback?: (seconds: number) => void,
   finishCallback?: () => void,
 ) => {
-  return new CountDown(seconds, intervalCallback, finishCallback)
+  return new AppTimer(seconds, intervalCallback, finishCallback)
 }
 
-export default createCountDown
+export default createAppTimer

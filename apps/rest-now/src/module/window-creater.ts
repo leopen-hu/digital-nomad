@@ -1,7 +1,7 @@
 import { BrowserWindow, BrowserWindowConstructorOptions } from "electron"
 import { devServerUrl, productionRendererRootPath, proloadPath } from "./consts"
 import createTray from "./tray-creater"
-import addCountDownListener from "./count-down/listeners"
+import addAppTimerListener from './app-timer/listeners'
 
 const createWindow = () => {
   const createBrowserWindow = () => {
@@ -41,7 +41,7 @@ const createWindow = () => {
 
   const mainWindow = createBrowserWindow()
   createTray(mainWindow)
-  addCountDownListener(mainWindow)
+  addAppTimerListener(mainWindow)
 
   mainWindow.once('ready-to-show', () => {
     mainWindow.show()

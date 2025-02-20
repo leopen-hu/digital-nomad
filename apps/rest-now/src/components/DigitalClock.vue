@@ -1,29 +1,29 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { useServerCountDown } from '@/store/server-count-down'
+import { useServerAppTimer } from '@/store/server-app-timer'
 
-const serverCountDown = useServerCountDown()
+const serverAppTimer = useServerAppTimer()
 
 const getInitialSeconds = async () => {
-  const seconds = await window.countDownApi.getSeconds()
-  serverCountDown.setSeconds(seconds)
+  const seconds = await window.appTimerApi.getSeconds()
+  serverAppTimer.setSeconds(seconds)
 }
 
 const start = async () => {
-  await serverCountDown.start()
+  await serverAppTimer.start()
 }
 
 const stop = async () => {
-  await serverCountDown.stop()
+  await serverAppTimer.stop()
 }
 
 const reset = async () => {
-  await serverCountDown.reset()
+  await serverAppTimer.reset()
 }
 
 onMounted(() => {
   getInitialSeconds()
-  window.countDownApi.onUpdated(serverCountDown.setSeconds)
+  window.appTimerApi.onUpdated(serverAppTimer.setSeconds)
 })
 </script>
 
@@ -32,7 +32,7 @@ onMounted(() => {
     <div class="flex flex-nowrap items-center justify-center">
       <div class="flex size-40 items-center justify-center">
         <span class="text-8xl text-gray-200">{{
-          serverCountDown.getFormattedTime('hours')
+          serverAppTimer.getFormattedTime('hours')
         }}</span>
       </div>
       <div class="p-4">
@@ -40,7 +40,7 @@ onMounted(() => {
       </div>
       <div class="flex size-40 items-center justify-center">
         <span class="text-8xl text-gray-200">{{
-          serverCountDown.getFormattedTime('minutes')
+          serverAppTimer.getFormattedTime('minutes')
         }}</span>
       </div>
       <div class="p-4">
@@ -48,7 +48,7 @@ onMounted(() => {
       </div>
       <div class="flex size-40 items-center justify-center">
         <span class="text-8xl text-gray-200">{{
-          serverCountDown.getFormattedTime('seconds')
+          serverAppTimer.getFormattedTime('seconds')
         }}</span>
       </div>
     </div>
