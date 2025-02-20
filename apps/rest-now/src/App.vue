@@ -5,7 +5,10 @@ import MainMenu from './components/MainMenu.vue'
 
 <template>
   <div class="h-dvh overflow-x-hidden">
-    <nav><MainMenu /></nav>
+    <nav class="drag-region flex w-full justify-start h-9">
+      <img src="@/../public/assets/icons/icon.ico" class="flex w-9 p-2"/>
+      <MainMenu class="not-drag-region" />
+    </nav>
     <div
       class="relative h-[calc(100%-36px)] bg-[url('/assets/bg-work.jpg')] bg-cover bg-center"
     >
@@ -18,3 +21,12 @@ import MainMenu from './components/MainMenu.vue'
     </div>
   </div>
 </template>
+
+<style lang="css" scoped>
+.drag-region {
+  -webkit-app-region: drag;
+}
+.not-drag-region {
+  -webkit-app-region: no-drag;
+}
+</style>

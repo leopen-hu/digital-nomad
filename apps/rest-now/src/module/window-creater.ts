@@ -6,28 +6,25 @@ import addAppTimerListener from './app-timer/listeners'
 const createWindow = () => {
   const createBrowserWindow = () => {
     // Create the browser window.
-    const baseOptions = {
+    const windowOptions: BrowserWindowConstructorOptions = {
       width: 800,
       height: 600,
       webPreferences: {
         preload: proloadPath,
       },
-    }
-    const devOptions = {}
-    const productionOptions = {
       titleBarStyle: 'hidden',
       titleBarOverlay: {
-        color: '#ffffff',
-        symbolColor: '#000000',
+        color: 'rgba(0,0,0,0)',
         height: 35,
+        symbolColor: 'black',
       },
+      resizable: false,
     }
-    const browserWindow = new BrowserWindow({
-      ...baseOptions,
-      ...(devServerUrl
-        ? devOptions
-        : (productionOptions as BrowserWindowConstructorOptions)),
-    })
+    const browserWindow = new BrowserWindow(windowOptions)
+
+    browserWindow.setMenu(null)
+    browserWindow.setMaximizable(false)
+    browserWindow.setResizable(false)
 
     if (devServerUrl) {
       browserWindow.loadURL(devServerUrl)
