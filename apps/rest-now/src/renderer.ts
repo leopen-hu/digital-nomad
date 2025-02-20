@@ -38,7 +38,3 @@ const pinia = createPinia()
 app.use(pinia)
 app.use(router)
 app.mount('#app')
-
-window.countDownApi.onUpdated((seconds: number) => {
-  console.log('seconds', seconds)
-})
