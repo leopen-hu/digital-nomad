@@ -64,3 +64,12 @@
     --ring:142.4 71.8% 29.2%;
   }
 }
+
+@layer components {
+  .text-digital-clock {
+    @apply text-gray-200 text-8xl lg:text-[160px];
+  }
+  .digital-clock-dot {
+    @apply w-8 h-8 mx-2 lg:w-10 lg:h-10 lg:mx-4 text-gray-200 ;
+  }
+}

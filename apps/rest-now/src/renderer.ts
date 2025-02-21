@@ -28,8 +28,8 @@
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import App from './App.vue'
-import router from './router'
+import App from './frontend/App.vue'
+import router from './frontend/router'
 import './index.css'
 
 const app = createApp(App)

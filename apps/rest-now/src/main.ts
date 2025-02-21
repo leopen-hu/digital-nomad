@@ -1,13 +1,22 @@
 import { app, BrowserWindow } from 'electron'
 import started from 'electron-squirrel-startup'
-import createWindow from './module/window-creater'
+import createWindow from './backend/module/window/main-window'
+import loadRenderer from './backend/module/window/load-renderer'
+import createTray from './backend/module/window/main-tray'
+import initWorkTimer from './backend/module/work-timer/init'
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (started) {
   app.quit()
 }
 
-app.on('ready', createWindow)
+app.on('ready', () => {
+  const mainWindow = createWindow()
+  const tray = createTray(mainWindow)
+  const workTimer = initWorkTimer(mainWindow)
+
+  loadRenderer(mainWindow)
+})
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
