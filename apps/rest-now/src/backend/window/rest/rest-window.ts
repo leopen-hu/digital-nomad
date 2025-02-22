@@ -2,8 +2,12 @@ import { BrowserWindow, screen } from 'electron'
 import loadRenderer from '@/backend/common/load-renderer'
 import initRest from '@/backend/module/rest/init'
 import { proloadPath } from '@/backend/common/paths'
+import { WorkTimer } from '@/backend/module/work-timer/service'
 
-const createRestWindows = (parentWindow: BrowserWindow) => {
+const createRestWindows = (
+  parentWindow: BrowserWindow,
+  workTimer: WorkTimer,
+) => {
   const displays = screen.getAllDisplays()
   const windows: BrowserWindow[] = []
 
@@ -30,7 +34,7 @@ const createRestWindows = (parentWindow: BrowserWindow) => {
     windows.push(restWindow)
   })
 
-  initRest(windows)
+  initRest(windows, workTimer)
   windows.forEach((w) => loadRenderer(w, 'rest'))
 
   return windows

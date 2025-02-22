@@ -33,6 +33,7 @@ onMounted(() => {
   initClock()
   window.workTimerApi.onWorkTimerUpdated((duration) => {
     console.log('onWorkTimerUpdated', duration)
+    isWorking.value = true
     formattedDuration.value = formatDuration(duration)
   })
 })

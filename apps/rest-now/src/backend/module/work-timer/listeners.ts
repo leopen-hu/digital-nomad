@@ -19,7 +19,7 @@ const registerWorkTimerListeners = (
 
   const handleStopWorkTimer = () => {
     workTimer.stop()
-    createRestWindows(window)
+    createRestWindows(window, workTimer)
   }
 
   const listeners = new Map([
@@ -29,7 +29,6 @@ const registerWorkTimerListeners = (
   ])
 
   listeners.forEach((handler, channel) => {
-    console.log(`registering ${channel}`)
     ipcMain.handle(channel, handler)
   })
 }

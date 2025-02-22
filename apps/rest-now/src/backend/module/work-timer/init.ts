@@ -6,7 +6,6 @@ import registerWorkTimerTriggers from './triggers'
 const initWorkTimer = (window: BrowserWindow) => {
   const triggers = registerWorkTimerTriggers(window)
   const onWorkTimerUpdated = (workTimer: WorkTimer) => {
-    console.log('work timer updated', workTimer.getWorkedDuration())
     triggers.sendWorkTimerUpdated(workTimer.getWorkedDuration())
   }
 

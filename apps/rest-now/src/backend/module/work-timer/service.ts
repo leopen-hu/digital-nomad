@@ -16,9 +16,7 @@ export class WorkTimer {
   }
 
   start(startCallback?: (workTimer: WorkTimer) => void) {
-    console.log('start')
     if (this.timer) {
-      console.log('this.timer', this.timer)
       return
     }
     this.startAt = new Date()
