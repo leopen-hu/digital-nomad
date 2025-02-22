@@ -2,7 +2,7 @@ import { BrowserWindow, ipcMain } from 'electron'
 import Work_Timer_Channels from './channels'
 import { WorkTimer } from './service'
 import { IWorkTimerTriggers } from './triggers'
-import createRestWindow from '@/backend/window/rest/rest-window'
+import createRestWindows from '@/backend/window/rest/rest-window'
 
 const registerWorkTimerListeners = (
   workTimer: WorkTimer,
@@ -19,7 +19,7 @@ const registerWorkTimerListeners = (
 
   const handleStopWorkTimer = () => {
     workTimer.stop()
-    createRestWindow(window)
+    createRestWindows(window)
   }
 
   const listeners = new Map([

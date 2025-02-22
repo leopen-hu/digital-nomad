@@ -1,8 +1,11 @@
 import { BrowserWindow, screen } from 'electron'
 import loadRenderer from '@/backend/common/load-renderer'
+import initRest from '@/backend/module/rest/init'
+import { proloadPath } from '@/backend/common/paths'
 
-const createRestWindow = (parentWindow: BrowserWindow) => {
+const createRestWindows = (parentWindow: BrowserWindow) => {
   const displays = screen.getAllDisplays()
+  const windows: BrowserWindow[] = []
 
   displays.forEach((display) => {
     const { x, y, height, width } = display.bounds
@@ -15,8 +18,7 @@ const createRestWindow = (parentWindow: BrowserWindow) => {
       width,
       height,
       webPreferences: {
-        nodeIntegration: true,
-        contextIsolation: false,
+        preload: proloadPath,
       },
       fullscreenable: true,
       fullscreen: true,
@@ -25,8 +27,13 @@ const createRestWindow = (parentWindow: BrowserWindow) => {
       resizable: false,
     })
 
-    loadRenderer(restWindow, 'rest')
+    windows.push(restWindow)
   })
+
+  initRest(windows)
+  windows.forEach((w) => loadRenderer(w, 'rest'))
+
+  return windows
 }
 
-export default createRestWindow
+export default createRestWindows
