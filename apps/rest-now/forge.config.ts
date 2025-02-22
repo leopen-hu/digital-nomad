@@ -10,12 +10,14 @@ import { FuseV1Options, FuseVersion } from '@electron/fuses'
 const config: ForgeConfig = {
   packagerConfig: {
     asar: true,
+    icon: 'public/assets/icons/icon',
   },
 
   rebuildConfig: {},
   makers: [
     new MakerSquirrel({
       name: 'rest-now',
+      setupIcon: 'public/assets/icons/icon.ico',
     }),
     new MakerZIP({}, ['darwin']),
     new MakerRpm({}),
