@@ -1,12 +1,9 @@
 import { BrowserWindow } from 'electron'
 import registerRestListeners from './listeners'
-import { WorkTimer } from '../work-timer/service'
+import { WorkTimer } from '../work-timer/work-timer'
 
-const initRest = (
-  window: BrowserWindow | BrowserWindow[],
-  workTimer: WorkTimer,
-) => {
-  registerRestListeners(window, workTimer)
+const initRest = (workTimer: WorkTimer) => {
+  registerRestListeners(workTimer)
 }
 
 export default initRest

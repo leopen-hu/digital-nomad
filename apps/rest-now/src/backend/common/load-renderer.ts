@@ -1,12 +1,12 @@
 import { devServerUrl, indexPath } from '@/backend/common/paths'
 import { BrowserWindow } from 'electron'
 
-const loadRenderer = (mainWindow: BrowserWindow, hash?: string) => {
+const loadRenderer = (winodw: BrowserWindow, hash?: string) => {
   if (devServerUrl) {
-    mainWindow.loadURL(hash ? `${devServerUrl}/#/${hash}` : devServerUrl)
-    mainWindow.webContents.openDevTools()
+    winodw.loadURL(hash ? `${devServerUrl}/#/${hash}` : devServerUrl)
+    winodw.webContents.openDevTools()
   } else {
-    mainWindow.loadFile(indexPath, { hash: hash })
+    winodw.loadFile(indexPath, { hash: hash })
   }
 }
 

@@ -2,16 +2,14 @@ import { BrowserWindow, screen } from 'electron'
 import loadRenderer from '@/backend/common/load-renderer'
 import initRest from '@/backend/module/rest/init'
 import { proloadPath } from '@/backend/common/paths'
-import { WorkTimer } from '@/backend/module/work-timer/service'
+import { WorkTimer } from '@/backend/module/work-timer/work-timer'
+import windowManager from '../manager'
 
-const createRestWindows = (
-  parentWindow: BrowserWindow,
-  workTimer: WorkTimer,
-) => {
+const createRestWindows = (workTimer: WorkTimer) => {
+  const parentWindow = windowManager.get('mainWindow')
   const displays = screen.getAllDisplays()
-  const windows: BrowserWindow[] = []
 
-  displays.forEach((display) => {
+  displays.forEach((display, index) => {
     const { x, y, height, width } = display.bounds
 
     const restWindow = new BrowserWindow({
@@ -31,13 +29,15 @@ const createRestWindows = (
       resizable: false,
     })
 
-    windows.push(restWindow)
+    windowManager.set(`restWindow${index}`, restWindow)
   })
 
-  initRest(windows, workTimer)
-  windows.forEach((w) => loadRenderer(w, 'rest'))
-
-  return windows
+  initRest(workTimer)
+  windowManager.forEach((window, key) => {
+    if (key.includes('restWindow')) {
+      loadRenderer(window, 'rest')
+    }
+  })
 }
 
 export default createRestWindows

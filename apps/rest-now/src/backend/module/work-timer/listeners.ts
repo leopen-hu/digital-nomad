@@ -1,17 +1,11 @@
-import { BrowserWindow, ipcMain } from 'electron'
+import { ipcMain } from 'electron'
 import Work_Timer_Channels from './channels'
-import { WorkTimer } from './service'
-import { IWorkTimerTriggers } from './triggers'
-import createRestWindows from '@/backend/window/rest/rest-window'
+import { WorkTimer } from './work-timer'
 
-const registerWorkTimerListeners = (
-  workTimer: WorkTimer,
-  triggers: IWorkTimerTriggers,
-  window: BrowserWindow,
-) => {
+const registerWorkTimerListeners = (workTimer: WorkTimer) => {
   const { Get_Worked_Duration, Start, Stop } = Work_Timer_Channels
 
-  const handleGetWorkedDuration = () => workTimer.getWorkedDuration()
+  const handleGetWorkedDuration = () => workTimer.getAllWorkedTime()
 
   const handleStartWorkTimer = () => {
     workTimer.start()
@@ -19,7 +13,6 @@ const registerWorkTimerListeners = (
 
   const handleStopWorkTimer = () => {
     workTimer.stop()
-    createRestWindows(window, workTimer)
   }
 
   const listeners = new Map([

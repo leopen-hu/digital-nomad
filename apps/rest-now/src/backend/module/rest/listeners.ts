@@ -1,17 +1,20 @@
 import { BrowserWindow, ipcMain } from 'electron'
 import Rest_Channels from './channels'
-import { WorkTimer } from '../work-timer/service'
+import { WorkTimer } from '../work-timer/work-timer'
+import windowManager from '@/backend/window/manager'
 
-const registerRestListeners = (
-  window: BrowserWindow | BrowserWindow[],
-  workTimer: WorkTimer,
-) => {
-  const windows = Array.isArray(window) ? window : [window]
+const registerRestListeners = (workTimer: WorkTimer) => {
   const { Close } = Rest_Channels
 
   const handleCloseWindow = () => {
     workTimer.start()
-    windows.forEach((w) => w.close())
+    windowManager.forEach((window, key) => {
+      if (key.includes('restWindow')) {
+        window.close()
+      } else {
+        window.isVisible() ? window.focus() : window.show()
+      }
+    })
   }
 
   const listeners = new Map([[Close, handleCloseWindow]])

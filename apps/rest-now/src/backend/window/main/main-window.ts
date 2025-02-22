@@ -3,6 +3,7 @@ import { proloadPath } from '@/backend/common/paths'
 import createTray from './main-tray'
 import initWorkTimer from '@/backend/module/work-timer/init'
 import loadRenderer from '@/backend/common/load-renderer'
+import windowManager from '../manager'
 
 const createMainWindow = () => {
   const mainWindow = new BrowserWindow({
@@ -19,11 +20,13 @@ const createMainWindow = () => {
     },
   })
 
+  windowManager.set('mainWindow', mainWindow)
+
   // init before renderer loaded
   mainWindow.setMenu(null)
 
   createTray(mainWindow)
-  initWorkTimer(mainWindow)
+  initWorkTimer()
 
   loadRenderer(mainWindow)
 
