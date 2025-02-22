@@ -1,5 +1,8 @@
 import { BrowserWindow } from 'electron'
 import { proloadPath } from '@/backend/common/paths'
+import createTray from './main-tray'
+import initWorkTimer from '@/backend/module/work-timer/init'
+import loadRenderer from '@/backend/common/load-renderer'
 
 const createMainWindow = () => {
   const mainWindow = new BrowserWindow({
@@ -18,6 +21,11 @@ const createMainWindow = () => {
 
   // init before renderer loaded
   mainWindow.setMenu(null)
+
+  createTray(mainWindow)
+  initWorkTimer(mainWindow)
+
+  loadRenderer(mainWindow)
 
   mainWindow.once('ready-to-show', () => {
     mainWindow.show()

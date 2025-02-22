@@ -5,25 +5,26 @@ const createRestWindow = (parentWindow: BrowserWindow) => {
   const displays = screen.getAllDisplays()
 
   displays.forEach((display) => {
-    const { x, y } = display.bounds
+    const { x, y, height, width } = display.bounds
 
     const restWindow = new BrowserWindow({
       x,
       y,
       parent: parentWindow,
       modal: true,
-      width: 800,
-      height: 600,
+      width,
+      height,
       webPreferences: {
         nodeIntegration: true,
         contextIsolation: false,
       },
-      fullscreenable:true,
+      fullscreenable: true,
       fullscreen: true,
-      simpleFullscreen:true,
-      frame:false
+      simpleFullscreen: true,
+      frame: false,
+      resizable: false,
     })
-  
+
     loadRenderer(restWindow, 'rest')
   })
 }

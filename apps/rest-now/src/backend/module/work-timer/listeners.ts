@@ -2,7 +2,7 @@ import { BrowserWindow, ipcMain } from 'electron'
 import Work_Timer_Channels from './channels'
 import { WorkTimer } from './service'
 import { IWorkTimerTriggers } from './triggers'
-import createRestWindow from '../rest-window/rest-window'
+import createRestWindow from '@/backend/window/rest/rest-window'
 
 const registerWorkTimerListeners = (
   workTimer: WorkTimer,
