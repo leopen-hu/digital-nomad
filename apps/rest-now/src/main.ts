@@ -1,7 +1,7 @@
 import { app, BrowserWindow } from 'electron'
 import started from 'electron-squirrel-startup'
 import createWindow from './backend/module/window/main-window'
-import loadRenderer from './backend/module/window/load-renderer'
+import loadRenderer from './backend/common/load-renderer'
 import createTray from './backend/module/window/main-tray'
 import initWorkTimer from './backend/module/work-timer/init'
 

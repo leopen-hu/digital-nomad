@@ -7,17 +7,13 @@ import AlertDialogCancel from '@/components/ui/alert-dialog/AlertDialogCancel.vu
 import { useServerAppTimer } from '@/store/server-app-timer'
 import { storeToRefs } from 'pinia'
 import WorkAnimate from '@/components/WorkAnimate.vue'
-import Layout from '../components/Layout.vue'
 
 const serverAppTimer = useServerAppTimer()
 const { status } = storeToRefs(serverAppTimer)
 </script>
 
 <template>
-  <Layout>
-    <div class="flex items-center justify-center h-full">
-    <WorkClock />
+  <div class="flex h-dvh overflow-x-hidden items-center justify-center bg-black text-white">
+    Rest Window
   </div>
-  </Layout>
-  
 </template>

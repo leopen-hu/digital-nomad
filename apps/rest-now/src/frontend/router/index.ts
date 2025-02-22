@@ -1,4 +1,5 @@
 import Home from '@/frontend/pages/Home.vue'
+import Rest from '@/frontend/pages/Rest.vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 const router = createRouter({
@@ -8,6 +9,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: Home,
+    },
+    {
+      path: '/rest',
+      name: 'rest',
+      component: Rest,
     },
     // {
     //   path: '/about',

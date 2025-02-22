@@ -11,7 +11,7 @@ import AppIcon from './icons/AppIcon.vue'
     <div
       class="relative h-[calc(100%-36px)] bg-gray-800"
     >
-    <RouterView />
+    <slot></slot>
     </div>
   </div>
 </template>
