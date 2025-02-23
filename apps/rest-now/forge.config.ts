@@ -9,6 +9,7 @@ import { FuseV1Options, FuseVersion } from '@electron/fuses'
 
 const config: ForgeConfig = {
   packagerConfig: {
+    appBundleId: 'com.rest-now.app',
     asar: true,
     icon: 'public/assets/icons/icon',
   },
