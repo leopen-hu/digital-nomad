@@ -4,9 +4,10 @@ import initRest from '@/backend/module/rest/init'
 import { proloadPath } from '@/backend/common/paths'
 import { WorkTimer } from '@/backend/module/work-timer/work-timer'
 import windowManager from '../manager'
+import { MAIN_WINDOW, REST_WINDOW } from '@/common/consts'
 
 const createRestWindows = (workTimer: WorkTimer) => {
-  const parentWindow = windowManager.get('mainWindow')
+  const parentWindow = windowManager.get(MAIN_WINDOW)
   const displays = screen.getAllDisplays()
 
   displays.forEach((display, index) => {
@@ -29,12 +30,12 @@ const createRestWindows = (workTimer: WorkTimer) => {
       resizable: false,
     })
 
-    windowManager.set(`restWindow${index}`, restWindow)
+    windowManager.set(`${REST_WINDOW}-${index}`, restWindow)
   })
 
   initRest(workTimer)
   windowManager.forEach((window, key) => {
-    if (key.includes('restWindow')) {
+    if (key.includes(REST_WINDOW)) {
       loadRenderer(window, 'rest')
     }
   })

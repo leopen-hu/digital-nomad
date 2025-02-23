@@ -1,13 +1,17 @@
 import { app, BrowserWindow } from 'electron'
 import started from 'electron-squirrel-startup'
 import createMainWindow from './backend/window/main/main-window'
+import { APP_BOUND_ID } from './common/consts'
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (started) {
   app.quit()
 }
 
-app.on('ready', createMainWindow)
+app.on('ready', () => {
+  if (process.platform === 'win32') app.setAppUserModelId(APP_BOUND_ID)
+  createMainWindow()
+})
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits

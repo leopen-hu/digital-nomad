@@ -4,6 +4,7 @@ import createTray from './main-tray'
 import initWorkTimer from '@/backend/module/work-timer/init'
 import loadRenderer from '@/backend/common/load-renderer'
 import windowManager from '../manager'
+import { MAIN_WINDOW } from '@/common/consts'
 
 const createMainWindow = () => {
   const mainWindow = new BrowserWindow({
@@ -20,7 +21,7 @@ const createMainWindow = () => {
     },
   })
 
-  windowManager.set('mainWindow', mainWindow)
+  windowManager.set(MAIN_WINDOW, mainWindow)
 
   // init before renderer loaded
   mainWindow.setMenu(null)

@@ -1,6 +1,7 @@
 import { Notification, NotificationConstructorOptions } from 'electron'
 import { iconPath } from './paths'
 import windowManager from '../window/manager'
+import { MAIN_WINDOW } from '@/common/consts'
 
 const defaultOptions = {
   title: 'Rest Now',
@@ -11,7 +12,7 @@ export const createNotification = (options?: NotificationConstructorOptions) => 
   const notification = new Notification({ ...defaultOptions, ...options })
 
   notification.on('click', () => {
-    const mainWindow = windowManager.get('mainWindow')
+    const mainWindow = windowManager.get(MAIN_WINDOW)
     if (!mainWindow) {
       return
     }
