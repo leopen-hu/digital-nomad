@@ -17,15 +17,17 @@ const devOptions = {
   maxDelayTimes: 2,
 }
 
-// const defaultOptions = devServerUrl ? devOptions : {
-//   restIntervals: 3600000,
-//   todayWorkedTime: 0,
-//   restDelay: 300000,
-//   maxDelayTimes: 2,
-// }
+const defaultOptions = devServerUrl
+  ? devOptions
+  : {
+      restIntervals: 3600000,
+      todayWorkedTime: 0,
+      restDelay: 300000,
+      maxDelayTimes: 3,
+    }
 
 // test for make
-const defaultOptions = devOptions
+// const defaultOptions = devOptions
 
 export class WorkTimer {
   private restIntervals: number
