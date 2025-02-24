@@ -1,4 +1,4 @@
-const formatDuration = (duration: number) => {
+export const formatTimeForClock = (duration: number) => {
   const hours = Math.floor(duration / 1000 / 3600)
   const minutes = Math.floor(((duration / 1000) % 3600) / 60)
   const seconds = Math.floor((duration / 1000) % 60)
@@ -13,5 +13,3 @@ const formatDuration = (duration: number) => {
     seconds: toString(seconds),
   }
 }
-
-export default formatDuration

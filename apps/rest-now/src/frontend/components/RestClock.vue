@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue'
 import { DotFilledIcon } from '@radix-icons/vue'
-import formatDuration from '@/common/format-duration'
+import {formatTimeForClock} from '@/common/format'
 
 let timer: NodeJS.Timeout
-const formattedTime = ref(formatDuration(0))
+const formattedTime = ref(formatTimeForClock(0))
 
 onMounted(() => {
   const startAt = Date.now()
   timer = setInterval(() => {
-    formattedTime.value = formatDuration(Date.now() - startAt)
+    formattedTime.value = formatTimeForClock(Date.now() - startAt)
   }, 1000)
 })
 

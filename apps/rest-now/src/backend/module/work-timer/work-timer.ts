@@ -80,13 +80,24 @@ export class WorkTimer {
   }
 
   stop() {
+    if (!this.timer) {
+      return
+    }
     clearInterval(this.timer)
     this.stopAt = new Date()
     this.timer = undefined
     // 更新 workedTime 减少计时器的误差
     this.todayWorkedTime += this.stopAt.getTime() - this.startAt.getTime()
+  }
+
+  rest() {
+    this.stop()
     // 打开休息界面
     createRestWindows(this)
+  }
+
+  endWork() {
+    this.stop()
     // 记录 startTime, stopTime, todayWorkedTime
   }
 
