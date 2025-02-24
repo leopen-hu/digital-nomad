@@ -1,7 +1,7 @@
 import { app, BrowserWindow } from 'electron'
 import started from 'electron-squirrel-startup'
 import createMainWindow from './backend/window/main/main-window'
-import { APP_BOUND_ID } from './common/consts'
+import { APP_BOUND_ID } from './backend/common/consts'
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (started) {

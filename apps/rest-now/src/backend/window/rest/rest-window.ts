@@ -4,7 +4,7 @@ import initRest from '@/backend/module/rest/init'
 import { proloadPath } from '@/backend/common/paths'
 import { WorkTimer } from '@/backend/module/work-timer/work-timer'
 import windowManager from '../manager'
-import { MAIN_WINDOW, REST_WINDOW } from '@/common/consts'
+import { MAIN_WINDOW, REST_WINDOW } from '@/backend/common/consts'
 
 const createRestWindows = (workTimer: WorkTimer) => {
   const parentWindow = windowManager.get(MAIN_WINDOW)

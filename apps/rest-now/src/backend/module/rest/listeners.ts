@@ -2,7 +2,7 @@ import { ipcMain } from 'electron'
 import Rest_Channels from './channels'
 import { WorkTimer } from '../work-timer/work-timer'
 import windowManager from '@/backend/window/manager'
-import { REST_WINDOW } from '@/common/consts'
+import { REST_WINDOW } from '@/backend/common/consts'
 
 const registerRestListeners = (workTimer: WorkTimer) => {
   const { Close } = Rest_Channels

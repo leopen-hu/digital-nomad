@@ -1,7 +1,7 @@
 import { Notification, NotificationConstructorOptions } from 'electron'
 import { iconPath } from './paths'
 import windowManager from '../window/manager'
-import { MAIN_WINDOW } from '@/common/consts'
+import { MAIN_WINDOW } from '@/backend/common/consts'
 
 const defaultOptions = {
   title: 'Rest Now',

@@ -4,7 +4,7 @@ import createTray from './main-tray'
 import initWorkTimer from '@/backend/module/work-timer/init'
 import loadRenderer from '@/backend/common/load-renderer'
 import windowManager from '../manager'
-import { MAIN_WINDOW } from '@/common/consts'
+import { MAIN_WINDOW } from '@/backend/common/consts'
 
 const createMainWindow = () => {
   const mainWindow = new BrowserWindow({
