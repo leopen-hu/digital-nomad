@@ -5,6 +5,7 @@ import initWorkTimer from '@/backend/module/work-timer/init'
 import loadRenderer from '@/backend/common/load-renderer'
 import windowManager from '../manager'
 import { MAIN_WINDOW } from '@/backend/common/consts'
+import initMenu from '@/backend/module/menu/init'
 
 const createMainWindow = () => {
   const mainWindow = new BrowserWindow({
@@ -28,11 +29,18 @@ const createMainWindow = () => {
 
   createTray(mainWindow)
   initWorkTimer()
-
+  initMenu()
   loadRenderer(mainWindow)
 
   mainWindow.once('ready-to-show', () => {
     mainWindow.show()
+  })
+
+  mainWindow.webContents.on('before-input-event', (event, input) => {
+    if (input.alt && input.key.toLowerCase() === 'f4') {
+      event.preventDefault()
+      mainWindow.destroy()
+    }
   })
 
   mainWindow.on('close', (event) => {

@@ -1,3 +1,4 @@
+import registerMenuApi, { IMenuApi } from './module/menu/api'
 import registerRestApi, { IRest } from './module/rest/api'
 import registerWorkTimerApi, {
   IWorkTimerApi,
@@ -7,12 +8,14 @@ declare global {
   interface Window {
     workTimerApi: IWorkTimerApi
     restApi: IRest
+    menuApi: IMenuApi
   }
 }
 
 export const registerApis = () => {
   registerWorkTimerApi()
   registerRestApi()
+  registerMenuApi()
 }
 
 const registerToPreloads = () => {
