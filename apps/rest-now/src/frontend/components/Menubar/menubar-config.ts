@@ -41,6 +41,9 @@ export const menubarConfig: MenubarTrigger[] = [
       },
     ],
   },
+]
+
+const devMenubarConfig = [
   {
     id: 'tools',
     label: 'Dev',
@@ -79,3 +82,7 @@ export const menubarConfig: MenubarTrigger[] = [
     ],
   },
 ]
+
+if (import.meta.env.DEV) {
+  menubarConfig.push(...devMenubarConfig)
+}
