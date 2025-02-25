@@ -2,17 +2,19 @@
   "$schema": "https://shadcn-vue.com/schema.json",
   "style": "new-york",
   "typescript": true,
-  "tsConfigPath": "./tsconfig.json",
   "tailwind": {
     "config": "tailwind.config.ts",
     "css": "src/index.css",
-    "baseColor": "slate",
+    "baseColor": "neutral",
     "cssVariables": true,
     "prefix": ""
   },
-  "framework": "vite",
   "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils"
-  }
+    "components": "@/frontend/components",
+    "composables": "@/frontend/composables",
+    "utils": "@/frontend/lib/utils",
+    "ui": "@/frontend/components/ui",
+    "lib": "@/frontend/lib"
+  },
+  "iconLibrary": "lucide"
 }

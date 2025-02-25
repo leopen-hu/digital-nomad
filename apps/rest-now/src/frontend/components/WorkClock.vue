@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { DotFilledIcon, PlayIcon, StopIcon } from '@radix-icons/vue'
+import { Dot, Play, Square } from 'lucide-vue-next'
 import { formatTimeForClock } from '@/common/format'
 import { useWorkStore } from '../store/work'
 import { storeToRefs } from 'pinia'
@@ -32,15 +32,15 @@ onMounted(() => {
         <span class="text-digital-clock">{{ formattedTime.hours }}</span>
       </div>
       <div class="flex flex-col items-center justify-center">
-        <DotFilledIcon class="digital-clock-dot" />
-        <DotFilledIcon class="digital-clock-dot" />
+        <Dot :strokeWidth="4" class="digital-clock-dot" />
+        <Dot :strokeWidth="4" class="digital-clock-dot" />
       </div>
       <div class="flex items-center justify-center">
         <span class="text-digital-clock">{{ formattedTime.minutes }}</span>
       </div>
       <div class="flex flex-col items-center justify-center">
-        <DotFilledIcon class="digital-clock-dot" />
-        <DotFilledIcon class="digital-clock-dot" />
+        <Dot :strokeWidth="4" class="digital-clock-dot" />
+        <Dot :strokeWidth="4" class="digital-clock-dot" />
       </div>
       <div class="flex items-center justify-center">
         <span class="text-digital-clock">{{ formattedTime.seconds }}</span>
@@ -52,12 +52,12 @@ onMounted(() => {
     >
       <button
         @click="clickButton"
-        :class="`flex justify-center items-center w-12 h-12 lg:w-20 lg:h-20 rounded-full border-2 cursor-pointer ${isWorking ? 'hover:text-red-500' : 'hover:text-primary'}`"
+        :class="`flex justify-center items-center w-12 h-12 lg:w-20 lg:h-20 rounded-full border-2 cursor-pointer ${isWorking ? 'hover:text-red-500' : 'hover:text-green-500'}`"
       >
-        <StopIcon v-if="isWorking" class="w-6 h-6 lg:w-10 lg:h-10" />
-        <PlayIcon
+        <Square v-if="isWorking" class="w-6 h-6 lg:w-10 lg:h-10" />
+        <Play
           v-else
-          class="w-8 h-8 ml-0.5 lg:w-12 lg:h-12 lg:ml-1 border-gray-200 hover:text-primary"
+          class="w-6 h-6 ml-0.5 lg:w-10 lg:h-10 lg:ml-1"
         />
       </button>
     </div>
