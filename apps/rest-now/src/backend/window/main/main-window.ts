@@ -33,6 +33,7 @@ const createMainWindow = () => {
   loadRenderer(mainWindow)
 
   mainWindow.once('ready-to-show', () => {
+    console.log('ready-to-show')
     mainWindow.show()
   })
 

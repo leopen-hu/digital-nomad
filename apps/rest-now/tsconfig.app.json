@@ -8,11 +8,11 @@
     "types": ["vite/client", "electron", "vitest/globals"],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@assets/*": ["./src/assets/*"],
-      "@frontend/*": ["./src/frontend/*"],
-      "@backend/*": ["./src/backend/*"],
-      "@database/*": ["./src/database/*"]
+      "@": ["./src/*"],
+      "@assets": ["./src/assets/*"],
+      "@frontend": ["./src/frontend/*"],
+      "@backend": ["./src/backend/*"],
+      "@database": ["./src/database/*"]
     },
     "allowJs": true,
     "resolveJsonModule": true,
@@ -24,13 +24,6 @@
     "sourceMap": true,
     "outDir": "dist"
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.vue",
-    "shims-vue.d.ts",
-    "src/database/migrations/001_initail.mts",
-    "src/database/migrations/001_initail.mts"
-  ],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue", "shims-vue.d.ts"],
   "exclude": ["node_modules", "dist", "out"]
 }

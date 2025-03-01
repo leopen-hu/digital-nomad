@@ -16,6 +16,7 @@ const { initWork, startWork, rest } = store
 
 const clickButton = () => {
   isWorking.value ? rest() : startWork()
+  console.log(window.themeApi.getTheme())
 }
 
 onMounted(() => {
