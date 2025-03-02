@@ -8,10 +8,6 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolvePath('./src'),
-      '@assets': resolvePath('./src/assets'),
-      '@frontend': resolvePath('./src/frontend'),
-      '@backend': resolvePath('./src/backend'),
-      '@database': resolvePath('./src/database'),
     },
   },
 })

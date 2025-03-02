@@ -8,11 +8,7 @@
     "types": ["vite/client", "electron", "vitest/globals"],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@assets/*": ["./src/assets/*"],
-      "@frontend/*": ["./src/frontend/*"],
-      "@backend/*": ["./src/backend/*"],
-      "@database/*": ["./src/database/*"]
+      "@/*": ["./src/*"]
     },
     "allowJs": true,
     "resolveJsonModule": true,

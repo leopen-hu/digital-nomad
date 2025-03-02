@@ -1,4 +1,4 @@
-import db from '@database/client'
+import db from '@/database/client'
 
 export class DataService {
   // 获取主题（带类型声明）
@@ -6,9 +6,9 @@ export class DataService {
     const result = await db('settings')
       .select('value')
       .where({ key: 'theme' })
-      .first();
+      .first()
 
-    return result?.value || 'light';
+    return result?.value || 'light'
   }
 
   // 更新主题（带类型声明）
@@ -16,6 +16,6 @@ export class DataService {
     await db('settings')
       .insert({ key: 'theme', value: theme })
       .onConflict('key')
-      .merge(); // SQLite 的 "INSERT OR REPLACE"
+      .merge() // SQLite 的 "INSERT OR REPLACE"
   }
 }
