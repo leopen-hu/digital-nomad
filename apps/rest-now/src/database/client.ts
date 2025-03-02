@@ -1,5 +1,5 @@
 import knex from 'knex'
-import config from './knex-config'
+import config from '../../knexfile'
 
 // 初始化 Knex 实例
 const db = knex(config.development)

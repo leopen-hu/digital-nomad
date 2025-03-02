@@ -25,8 +25,7 @@
     "src/**/*.d.ts",
     "src/**/*.vue",
     "shims-vue.d.ts",
-    "src/database/migrations/001_initail.mts",
-    "src/database/migrations/001_initail.mts"
+    "knexfile.ts"
   ],
   "exclude": ["node_modules", "dist", "out"]
 }
