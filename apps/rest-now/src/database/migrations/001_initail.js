@@ -1,5 +1,3 @@
-
-
 async function up(knex) {
   console.error('up')
   await knex.schema.createTable('settings', (table) => {

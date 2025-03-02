@@ -6,9 +6,10 @@ export interface IRest {
   close: () => Promise<number>
 }
 
-const registerRestApi = () =>{
+const registerRestApi = () => {
   registerApi<IRest>('restApi', {
     close: () => ipcRenderer.invoke(Rest_Channels.Close),
-  })}
+  })
+}
 
 export default registerRestApi

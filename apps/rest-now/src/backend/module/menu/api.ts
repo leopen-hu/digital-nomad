@@ -9,12 +9,14 @@ export interface IMenuApi {
   forceReload: () => Promise<number>
 }
 
-const registerMenuApi = () =>{
+const registerMenuApi = () => {
   registerApi<IMenuApi>('menuApi', {
     closeApp: () => ipcRenderer.invoke(MENU_CHANNELS.CLOSE_APP),
-    toggleDevTools: () => ipcRenderer.invoke(MENU_CHANNELS.TOGGLE_DEVTOOLS),
+    toggleDevTools: () =>
+      ipcRenderer.invoke(MENU_CHANNELS.TOGGLE_DEVTOOLS),
     reload: () => ipcRenderer.invoke(MENU_CHANNELS.RELOAD),
     forceReload: () => ipcRenderer.invoke(MENU_CHANNELS.FORCE_RELOAD),
-  })}
+  })
+}
 
 export default registerMenuApi

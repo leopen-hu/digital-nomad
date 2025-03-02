@@ -8,7 +8,9 @@ const defaultOptions = {
   body: 'Take a break now!',
   icon: iconPath,
 }
-export const createNotification = (options?: NotificationConstructorOptions) => {
+export const createNotification = (
+  options?: NotificationConstructorOptions,
+) => {
   const notification = new Notification({ ...defaultOptions, ...options })
 
   notification.on('click', () => {

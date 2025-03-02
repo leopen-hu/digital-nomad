@@ -1,4 +1,4 @@
-import { MenubarItem, MenubarTrigger } from "./menubar-config"
+import { MenubarItem, MenubarTrigger } from './menubar-config'
 
 export const menubarConfig: MenubarTrigger[] = [
   {

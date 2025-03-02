@@ -1,5 +1,5 @@
-import { BrowserWindow } from "electron";
+import { BrowserWindow } from 'electron'
 
-const windowManager = new Map<string, BrowserWindow>();
+const windowManager = new Map<string, BrowserWindow>()
 
-export default windowManager;
+export default windowManager
