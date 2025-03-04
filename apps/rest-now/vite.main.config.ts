@@ -10,4 +10,9 @@ export default defineConfig({
       '@': resolvePath('./src'),
     },
   },
+  build: {
+    rollupOptions: {
+      external: ['better-sqlite3'],
+    },
+  },
 })

@@ -20,6 +20,11 @@
     "sourceMap": true,
     "outDir": "dist"
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue", "shims-vue.d.ts"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.vue",
+    "shims-vue.d.ts"
+  ],
   "exclude": ["node_modules", "dist", "out"]
 }

@@ -27,7 +27,9 @@
     "onlyBuiltDependencies": [
       "electron",
       "electron-winstaller",
-      "esbuild"
+      "esbuild",
+      "vue-demi",
+      "bettre-sqlite3"
     ]
   }
 }
